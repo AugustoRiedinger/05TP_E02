@@ -23,14 +23,13 @@
 #define  TLCD_MAXY             2  // max y-Position (0...1)
 #define  Delay_Debouncing 100e3
 #define	 BufferLength 	  20
-#define  MaxDigCount 	  4035
-#define  MaxMiliVoltRef	  3000
+#define  MaxDigCount 	  4095
+#define  MaxMiliVoltRef	  3320
 
 TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  		TIM_OCInitStructure;
 EXTI_InitTypeDef   		EXTI_InitStructure;
 DAC_InitTypeDef 		DAC_InitStructure;
-GPIO_InitTypeDef  		GPIO_InitStructure;
 
 //--------------------------------------------------------------
 // LCD Kommandos (siehe Datenblatt)
@@ -111,8 +110,8 @@ void SET_TIM3(uint32_t, uint32_t);
 
 void INIT_EXTINT(GPIO_TypeDef*, uint16_t);
 
-void INIT_DAC_CONT(GPIO_TypeDef*, uint16_t);
-void DAC_CONT(GPIO_TypeDef*, uint16_t, int32_t);
+void INIT_DAC_CONT(GPIO_TypeDef* , uint16_t);
+void DAC_CONT(GPIO_TypeDef*, uint16_t, int16_t);
 
 
 #endif //mi_libreria_H

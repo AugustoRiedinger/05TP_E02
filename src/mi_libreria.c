@@ -805,8 +805,10 @@ INIT_DAC_CONT
 	* @ej
 		- INIT_DAC_CONT(GPIOX, GPIO_Pin_X); //Inicialización del Pin PXXX como DAC.
 ******************************************************************************/
-INIT_DAC_CONT(GPIO_TypeDef* Port, uint16_t Pin)
+void INIT_DAC_CONT(GPIO_TypeDef* Port, uint16_t Pin)
 {
+	GPIO_InitTypeDef GPIO_InitStructure;
+
 	/* Enable GPIO clock */
 	uint32_t Clock;
 	Clock = FIND_CLOCK(Port);
@@ -845,7 +847,7 @@ DAC_CONT
 	* @ej
 		- INIT_DAC_CONT(GPIOX, GPIO_Pin_X); //Inicialización del Pin PXXX como DAC.
 ******************************************************************************/
-void DAC_CONT(GPIO_TypeDef* Port, uint16_t Pin, int32_t MiliVolts)
+void DAC_CONT(GPIO_TypeDef* Port, uint16_t Pin, int16_t MiliVolts)
 {
 	uint16_t Data;
 
@@ -854,7 +856,7 @@ void DAC_CONT(GPIO_TypeDef* Port, uint16_t Pin, int32_t MiliVolts)
 	if(FIND_DAC_CHANNEL(Port,Pin) == DAC_Channel_1)
 		DAC_SetChannel1Data(DAC_Align_12b_R, MiliVolts);
 	else
-		DAC_SetChannel2Data(DAC_Align_12b_R, MiliVolts);
+		DAC_SetChannel2Data(DAC_Align_12b_R, Data);
 }
 /*------------------------------------------------------------------------------
  FUNCIONES INTERNAS:
@@ -1205,7 +1207,7 @@ uint32_t FIND_EXTI_HANDLER(uint32_t Pin)
 
 uint32_t FIND_DAC_CHANNEL(GPIO_TypeDef* Port, uint32_t Pin)
 {
-	if(Port == GPIOA && Pin == GPIO_Pin_5) return DAC_Channel_1;
+	if(Port == GPIOA && Pin == GPIO_Pin_5) return DAC_Channel_2;
 	else return 0;
 }
 /*------------------------------------------------------------------------------
