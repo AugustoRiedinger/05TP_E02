@@ -1,0 +1,2 @@
+# 05TP_E02
+ Realizar un programa que tome al pulsador azul mediante interrupción por flanco ascendente, y en la rutina de atención del mismo generar distintos niveles de tensión mediante un DAC. Los niveles de tensión deben comenzar en 0 Volts con incrementos de a 100 mV cada vez que el usuario presiona el botón (eliminar antirrebote). Al llegar al máximo de tensión debe volver a 0. El valor de tensión generado mostrarlo en un display LCD de 2x16.
