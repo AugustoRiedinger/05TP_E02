@@ -22,6 +22,9 @@ LIBRERIAS:
 /*------------------------------------------------------------------------------
 DEFINICIONES:
 ------------------------------------------------------------------------------*/
+//Pines del UserButton:
+#define UserButton_Port	GPIOC
+#define UserButton		GPIO_Pin_13
 
 /*------------------------------------------------------------------------------
 DECLARACION DE FUNCIONES LOCALES:
@@ -48,7 +51,11 @@ CONFIGURACION DEL MICRO:
 ------------------------------------------------------------------------------*/
 	SystemInit();
 
+	//Inicializacion del UserButton por interrupcion externa:
+	INIT_EXTINT(UserButton_Port, UserButton);
 
+	//Inializacion del led interno de prueba:
+	INIT_DO(GPIOB, GPIO_Pin_0);
 
 /*------------------------------------------------------------------------------
 BUCLE PRINCIPAL:
@@ -63,4 +70,13 @@ BUCLE PRINCIPAL:
 /*------------------------------------------------------------------------------
 INTERRUPCIONES:
 ------------------------------------------------------------------------------*/
-
+/*Interrupcion al pulso ascendente por PC13: */
+void EXTI15_10_IRQHandler(void)
+{
+	/*Si la interrupcion fue por linea 13 (PC13): */
+	if(EXTI_GetITStatus(EXTI_Line13) != RESET)
+	{
+		GPIO_ToggleBits(GPIOB, GPIO_Pin_0);
+		EXTI_ClearITPendingBit(EXTI_Line13);
+	}
+}

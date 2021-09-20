@@ -849,7 +849,7 @@ void DAC_CONT(GPIO_TypeDef* Port, uint16_t Pin, int32_t MiliVolts)
 {
 	uint16_t Data;
 
-	Data = (MiliVolts * MaDigCount) / MaxMiliVoltRef;
+	Data = (MiliVolts * MaxDigCount) / MaxMiliVoltRef;
 
 	if(FIND_DAC_CHANNEL(Port,Pin) == DAC_Channel_1)
 		DAC_SetChannel1Data(DAC_Align_12b_R, MiliVolts);

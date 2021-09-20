@@ -30,6 +30,7 @@ TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  		TIM_OCInitStructure;
 EXTI_InitTypeDef   		EXTI_InitStructure;
 DAC_InitTypeDef 		DAC_InitStructure;
+GPIO_InitTypeDef  		GPIO_InitStructure;
 
 //--------------------------------------------------------------
 // LCD Kommandos (siehe Datenblatt)
