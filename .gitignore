@@ -9,3 +9,10 @@ Debug/05TP_E02.map
 Debug/05TP_E02.list
 Debug/05TP_E02.elf
 05TP_E02.elf.launch
+Debug/05TP_E02.elf
+Debug/05TP_E02.list
+Debug/05TP_E02.map
+Debug/src/main.o
+Debug/src/main.su
+Debug/src/system_stm32f4xx.o
+Debug/src/system_stm32f4xx.su
